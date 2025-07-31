@@ -17,10 +17,10 @@ public class WeatherController {
     private WeatherService weatherService;
 
     @GetMapping
-    public ResponseEntity<String> getWeather(@RequestParam(defaultValue = "Melbourne") String city) {
+    public ResponseEntity<String> getWeather(@RequestParam(defaultValue = "melbourne") String city) {
         
         try {
-            WeatherResponse response = weatherService.getWeather("Melbourne");
+            WeatherResponse response = weatherService.getWeather("melbourne");
             return new ResponseEntity<>(new ObjectMapper().writeValueAsString(response), HttpStatus.OK);
 
         } catch (Exception e) {

@@ -22,17 +22,17 @@ class WeatherControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Mock
+    @MockBean
     private WeatherService weatherService;
 
     @Test
     void testGetWeather() throws Exception {
         WeatherResponse mockResponse = new WeatherResponse(20, 7);
-        Mockito.when(weatherService.getWeather("Melbourne")).thenReturn(mockResponse);
+        Mockito.when(weatherService.getWeather("melbourne")).thenReturn(mockResponse);
 
-        mockMvc.perform(get("/v1/weather?city=Melbourne"))
+        mockMvc.perform(get("/v1/weather?city=melbourne"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.temperature_degrees", is(20)))
-                .andExpect(jsonPath("$.wind_speed", is(7)));
+                .andExpect(jsonPath("$.wind_speed", is(20)))
+                .andExpect(jsonPath("$.temperature_degrees", is(7)));
     }
 }
